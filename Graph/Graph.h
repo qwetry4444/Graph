@@ -19,6 +19,7 @@ private:
 public:
 	Graph();
 	Graph(bool isDirected, bool isMulti, bool isMultiPart);
+	//Graph(int countNodes, bool isDirected, bool isMulti, bool isMultiPart);
 	~Graph();
 
 	Node GetNodeById(int id);
@@ -41,7 +42,9 @@ public:
 
 	void AddNode(int nodeId, int value);
 	void AddNode(Node node);
+	void DeleteNode(int nodeId);
 	void AddEdge(int nodeSrcId, int nodeDestId);
+	void DeleteEdge(int srcNodeId, int destNodeId);
 	void AddGraph(Graph otherGraph);
 	void Print();
 	void Input();

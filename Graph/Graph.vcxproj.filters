@@ -24,12 +24,18 @@
     <ClCompile Include="Graph.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="GraphPerfomanceTester.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="Graph.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphPerformanceTester.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

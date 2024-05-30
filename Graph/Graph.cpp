@@ -106,6 +106,28 @@ void Graph::AddNode(Node node) {
 	countNodes++;
 }
 
+void Graph::DeleteNode(int nodeId) {
+	adjList.erase(nodeId);
+	nodeData.erase(nodeId);
+
+	for (auto& pair : adjList) {
+		if (pair.first != nodeId) {
+			auto& neighbors = pair.second;
+			neighbors.erase(std::remove(neighbors.begin(), neighbors.end(), nodeId), neighbors.end());
+		}
+	}
+
+	countNodes--;
+}
+
+void Graph::DeleteEdge(int srcNodeId, int destNodeId) {
+	auto& srcNeighbors = adjList[srcNodeId];
+	srcNeighbors.erase(std::remove(srcNeighbors.begin(), srcNeighbors.end(), destNodeId), srcNeighbors.end());
+
+	auto& destNeighbors = adjList[destNodeId];
+	destNeighbors.erase(std::remove(destNeighbors.begin(), destNeighbors.end(), srcNodeId), destNeighbors.end());
+}
+
 
 void Graph::AddEdge(int nodeSrcId, int nodeDestId) {
 	if (isMultiPart) {
@@ -434,7 +456,7 @@ void Graph::LoadFromFile(string filename) {
 
 void Graph::Input()
 {
-	int multi, directed, multiPart;
+	int multi, directed, multiPart = 1;
 	cout << "  Ориентированный граф?" << endl;
 	cout << "  1 - Да  2 - Нет" << endl;
 	cout << "  Выбор: ";
@@ -443,10 +465,10 @@ void Graph::Input()
 	cout << "  1 - Да  2 - Нет" << endl;
 	cout << "  Выбор: ";
 	cin >> multi;
-	cout << endl << "  Многодольный граф?" << endl;
-	cout << "  1 - Да  2 - Нет" << endl;
-	cout << "  Выбор: ";
-	cin >> multiPart;
+	//cout << endl << "  Многодольный граф?" << endl;
+	//cout << "  1 - Да  2 - Нет" << endl;
+	//cout << "  Выбор: ";
+	//cin >> multiPart;
 	isDirected = (directed == 1);
 	isMulti = (multi == 1);
 	isMultiPart = (multiPart == 1);
